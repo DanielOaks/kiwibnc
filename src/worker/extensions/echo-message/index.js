@@ -50,7 +50,7 @@ module.exports.init = async function init(hooks) {
             return;
         }
         let {client, message} = event;
-        if(message.command === 'PRIVMSG' || message.command === 'NOTICE') {
+        if(message.command === 'PRIVMSG' || message.command === 'NOTICE' || message.command === 'TAGMSG') {
             if (!client.state.caps.has('echo-message')
             && client.upstream.state.nick === message.nick) {
                 event.preventDefault();
