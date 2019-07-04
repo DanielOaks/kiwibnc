@@ -22,7 +22,7 @@ module.exports.init = async function init(hooks) {
         // If the server doesn't support echo-message we do it ourselves with our own message.
         if (!upstream.state.caps.has('echo-message')) {
             let msg = event.message;
-            if(msg.command !== 'PRIVMSG' && msg.command !== 'NOTICE') {
+            if(msg.command !== 'PRIVMSG' && msg.command !== 'NOTICE' && msg.command !== 'TAGMSG') {
                 return;
             }
             // Give ID to original message so it is stored correctly
