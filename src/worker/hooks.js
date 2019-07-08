@@ -83,6 +83,14 @@ commandHooks.addBuiltInHooks = function addBuiltInHooks() {
         }
     });
 
+    // message-tags support
+    commandHooks.on('message_to_client', event => {
+        let {client, message} = event;
+        if (message.command === 'TAGMSG' && !client.state.caps.has('message-tags')) {
+            event.preventDefault();
+        }
+    });
+
     // multi-prefix support
     commandHooks.on('available_caps', event => {
         event.caps.add('multi-prefix');
